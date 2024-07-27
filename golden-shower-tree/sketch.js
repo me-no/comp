@@ -14,7 +14,7 @@ let noisex = 1, noisey = 2;
 
 function preload () {
   nightsky = loadImage("nightsky.png");
-  bk_grad = loadImage("back-gradation-org.png");
+  bk_grad = loadImage("back-gradation.png");
   bk_road = loadImage("back-road.png");
   road = loadImage("road.png");
   fl_floor = loadImage("flowers_floor.png");
@@ -180,10 +180,10 @@ function draw() {
   image(fl_bs_mv, -org_x+bs_x, -org_y+bs_y/2, imwidth, imheight);
   image(fl_pt, -org_x+143*scal, -org_y+173*scal, fl_pt.width/4*scal, fl_pt.height/4*scal);
   //image(fl_fr_01, -org_x+fl_x, -org_y+fl_y, imwidth, imheight);
-  if(dfl_x+dfl_y > 0.1){
+  if(dfl_x+dfl_y > 0.06){
     //image(fl_fr_01, -org_x+fl_x, -org_y+fl_y, imwidth, imheight);
     fl_fr = fl_fr_01;
-  } else if(dfl_x+dfl_y < -0.1) {
+  } else if(dfl_x+dfl_y < -0.06) {
     //image(fl_fr_02, -org_x+fl_x, -org_y+fl_y, imwidth, imheight);
     fl_fr = fl_fr_02;
   }
