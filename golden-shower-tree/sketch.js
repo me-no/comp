@@ -59,6 +59,10 @@ function setup() {
   
   petal_scal = 3;
   petal_x = -org_x-fallingpetal.width*petal_scal;
+  
+  // initialize mouse position
+  mouseX = 156;//246;
+  mouseY = 98;//222;
 
 }
 
@@ -122,9 +126,27 @@ function draw() {
   sky_x = noise(noisex)*3;
   sky_y = noise(noisey)*3;
   
+  // brightness on cursor _bottom
+  fill(255,255,255,5);
+  noStroke();
+  if(mouseY < 600) {
+    mouseradius = int( map(noise(noisey*20),0,1,8,20))*scal;
+  }
+    
   
   image(nightsky, -org_x+sky_x, -org_y+sky_y, imwidth,imheight);
+  
   image(bk_grad, -org_x, -org_y, imwidth,imheight);
+  
+  
+  // brightness on cursor _middle
+  mouseradius = int( map(noise(noisey*20),0,1,4,12))*scal;
+  if(mouseY < 600){
+    makeCircleAvec(mouseX, mouseY, mouseradius);
+  }
+  
+  
+  
   image(bk_road, -org_x, -org_y, imwidth,imheight);
   
   // draw starfish 
@@ -188,6 +210,21 @@ function draw() {
     fl_fr = fl_fr_02;
   }
   image(fl_fr, -org_x+fl_x, -org_y+fl_y, imwidth, imheight);
+  
+  
+  
+  // brightness on cursor _front
+  /*
+  fill(255,249,22,20);
+  //stroke(150,124,3,50);
+  mouseradius = int( map(noise(noisey*20),0,1,1,2));
+  makeCircleAvec(mouseX, mouseY, mouseradius);
+  */
+ 
+  
+  
+  
+  // KID
   
   //image(kid, -org_x, -org_y, imwidth, imheight);
   
