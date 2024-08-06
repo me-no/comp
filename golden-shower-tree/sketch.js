@@ -130,7 +130,7 @@ function draw() {
   fill(255,255,255,5);
   noStroke();
   if(mouseY < 600) {
-    mouseradius = int( map(noise(noisey*20),0,1,8,20))*scal;
+    mouseradius = int( map(noise(noisex*10),0,1,8,20))*scal;
   }
     
   
@@ -140,7 +140,7 @@ function draw() {
   
   
   // brightness on cursor _middle
-  mouseradius = int( map(noise(noisey*20),0,1,4,12))*scal;
+  mouseradius = int( map(noise(noisex*10),0,1,4,12))*scal;
   if(mouseY < 600){
     makeCircleAvec(mouseX, mouseY, mouseradius);
   }
