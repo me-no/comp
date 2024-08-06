@@ -61,7 +61,7 @@ function setup() {
   petal_x = -org_x-fallingpetal.width*petal_scal;
   
   // initialize mouse position
-  mouseX = 156;//246;
+  mouseX = 171;//246;
   mouseY = 98;//222;
 
 }
@@ -140,7 +140,7 @@ function draw() {
   
   
   // brightness on cursor _middle
-  mouseradius = int( map(noise(noisex*10),0,1,4,10))*scal;
+  mouseradius = int( map(noise(noisex*10),0,1,4,8))*scal;
   if(mouseY < 600){
     makeCircleAvec(mouseX, mouseY, mouseradius);
   }
