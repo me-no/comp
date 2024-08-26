@@ -4,6 +4,7 @@ let backcolor = [0,33,54];
 
 let fr = 10;
 let currentTime, currentSec, currentMillisec;
+let increaseTintFrom = 300;// これ以降の値で虫の聲をフェードイン
 
 function preload() {
   imgkid = loadImage("kid-close-1.png");
@@ -128,10 +129,12 @@ function draw() {
   
   if(insVoiceLoc) {
     for(let i=0;i<insVoiceLoc.length;i++) {
-      mstotint=map(currentMillisec,0,1000,0,PI);
-      tint(255,100*sin(mstotint));
-      image(lin, insVoiceLoc[i][0],insVoiceLoc[i][1],lin.width/4*scal, lin.height/4*scal);
-      tint(255,255);
+      if(currentMillisec>increaseTintFrom){
+        mstotint=map(currentMillisec,increaseTintFrom,1000,0,PI);
+        tint(255,100*sin(mstotint));
+        image(lin, insVoiceLoc[i][0],insVoiceLoc[i][1],lin.width/4*scal, lin.height/4*scal);
+        tint(255,255);
+      }
     }
   }
   
@@ -205,11 +208,10 @@ function plotInsect() {
     image(insects[d], x,y,insects[d].width/4*scal, insects[d].height/4*scal);
     
     // store the position if d = lin
-    if(insects[d]===lin) {
+    if(insects[d]===lin && insVoiceLoc.length<=5) {
       insVoiceLoc.push([x,y]);
-      if(insVoiceLoc.length>5 ) {
-        insVoiceLoc.shift();
-      }
+    } else if(insVoiceLoc.length>5 && currentMillisec<increaseTintFrom) {
+      insVoiceLoc.shift();
     }
   }
   
